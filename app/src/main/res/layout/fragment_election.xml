@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+   <data>
+       <variable
+           name="viewModel"
+           type="com.example.android.politicalpreparedness.election.ElectionsViewModel" />
+   </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/default_padding">
+
+        <!-- TODO: Add Upcoming Election Recycler and Header -->
+
+        <!-- TODO: Add Saved Election Recycler and Header -->
+
+
+        <Button
+            android:id="@+id/elections_item_test_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Election Button Test"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
