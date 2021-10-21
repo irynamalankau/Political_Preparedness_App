@@ -12,7 +12,7 @@ import com.example.android.politicalpreparedness.databinding.FragmentElectionBin
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 import com.example.android.politicalpreparedness.network.models.Division
 
-class VoterInfoFragment () : Fragment() {
+class VoterInfoFragment() : Fragment() {
 
     private lateinit var viewModel: VoterInfoViewModel
 
@@ -28,8 +28,12 @@ class VoterInfoFragment () : Fragment() {
         val viewModelFactory = VoterInfoViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(VoterInfoViewModel::class.java)
 
+        val arguments = VoterInfoFragmentArgs.fromBundle(requireArguments())
+
        binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        binding.textview.text = arguments.argElectionId.toString()
 
 
         //TODO: Populate voter info -- hide views without provided data.

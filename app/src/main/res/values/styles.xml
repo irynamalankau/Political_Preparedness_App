@@ -23,7 +23,7 @@
     </style>
 
     <style name="subtitle">
-        <item name="android:textColor">@color/gray30</item>
+        <item name="android:textColor">#ff4568</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
 
