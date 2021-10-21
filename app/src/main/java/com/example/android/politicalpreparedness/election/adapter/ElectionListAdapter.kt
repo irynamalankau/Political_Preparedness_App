@@ -1,4 +1,3 @@
-/*
 package com.example.android.politicalpreparedness.election.adapter
 
 import android.view.ViewGroup
@@ -21,4 +20,4 @@ class ElectionListAdapter(private val clickListener: ElectionListener): ListAdap
 
 //TODO: Create ElectionDiffCallback
 
-//TODO: Create ElectionListener*/
+//TODO: Create ElectionListener

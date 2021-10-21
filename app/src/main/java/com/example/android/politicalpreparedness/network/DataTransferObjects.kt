@@ -1,6 +1,6 @@
 package com.example.android.politicalpreparedness.network
 
-import com.example.android.politicalpreparedness.election.Election
+import com.example.android.politicalpreparedness.network.models.Election
 import com.example.android.politicalpreparedness.network.models.ElectionEntity
 
 fun List<ElectionEntity>.asDomainModel(): List<Election> {

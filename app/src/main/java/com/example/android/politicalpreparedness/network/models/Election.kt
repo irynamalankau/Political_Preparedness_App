@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.election
+package com.example.android.politicalpreparedness.network.models
 
 import android.os.Parcelable
 import com.example.android.politicalpreparedness.network.models.Division
