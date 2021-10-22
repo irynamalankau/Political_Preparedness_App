@@ -31,9 +31,9 @@
         <argument
             android:name="arg_election_id"
             app:argType="integer" />
-        <!--<argument
+        <argument
             android:name="arg_division"
-            app:argType="com.example.android.politicalpreparedness.network.models.Division" />-->
+            app:argType="com.example.android.politicalpreparedness.network.models.Division" />
     </fragment>
     <fragment
         android:id="@+id/electionsFragment"

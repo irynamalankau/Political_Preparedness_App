@@ -6,7 +6,9 @@ import androidx.lifecycle.Transformations
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.asDomainModel
+import com.example.android.politicalpreparedness.network.models.Division
 import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -22,11 +24,11 @@ class ElectionsRepository(val database: ElectionDatabase) {
     }
 
     //get elections list from API and insert into db
+    //TODO: need to add filtration by date to show only upcoming elections and remove the old ones
     suspend fun refreshElectionsList() {
         withContext(Dispatchers.IO) {
             try {
-                val response = CivicsApi.retrofitService.getElections()
-                val elections = response.elections
+                val elections = CivicsApi.retrofitService.getElections().elections
 
                 database.electionDao.insertAll(elections)
 
@@ -35,6 +37,16 @@ class ElectionsRepository(val database: ElectionDatabase) {
                 e.printStackTrace()
             }
 
+        }
+    }
+
+    //get Voter Info from API
+    //address is division.state
+    suspend fun getVoterInfo(electionId: Int, division: Division): VoterInfoResponse? {
+        return try {
+            CivicsApi.retrofitService.getVoterInfo(division.state, electionId)
+        } catch (e: Exception) {
+            null
         }
     }
 }

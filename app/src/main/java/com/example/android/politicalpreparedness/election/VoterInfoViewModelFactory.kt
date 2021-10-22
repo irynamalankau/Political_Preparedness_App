@@ -7,11 +7,12 @@ import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.network.models.Division
 
 
-class VoterInfoViewModelFactory(val app: Application) : ViewModelProvider.Factory {
+class VoterInfoViewModelFactory(private val dataSource: ElectionsRepository, private val electionId: Int, val division: Division )
+    : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(VoterInfoViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return VoterInfoViewModel(app) as T
+            return VoterInfoViewModel(dataSource, electionId, division) as T
         }
         throw IllegalArgumentException("Unable to construct viewmodel")
     }

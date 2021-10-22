@@ -25,7 +25,7 @@ class ElectionsViewModel(application: Application) : ViewModel() {
     val upcomingElections: LiveData<List<Election>>
         get() = repository.getCachedElections()
 
-    private val _navigateToVoterInfo = MutableLiveData<Int>()
+    private val _navigateToVoterInfo = MutableLiveData<Election>()
     val navigateToVoterInfo
         get() = _navigateToVoterInfo
 
@@ -50,8 +50,8 @@ class ElectionsViewModel(application: Application) : ViewModel() {
     }
 
     //Create functions to navigate to saved or upcoming election voter info
-    fun onElectionClicked(id: Int) {
-        _navigateToVoterInfo.value = id
+    fun onElectionClicked(election: Election) {
+        _navigateToVoterInfo.value = election
     }
 
     fun onVoterInfoNavigated() {

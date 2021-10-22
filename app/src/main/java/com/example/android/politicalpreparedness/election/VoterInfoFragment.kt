@@ -6,6 +6,7 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
@@ -16,19 +17,27 @@ class VoterInfoFragment() : Fragment() {
 
     private lateinit var viewModel: VoterInfoViewModel
 
+    private lateinit var repository: ElectionsRepository
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+        val arguments = VoterInfoFragmentArgs.fromBundle(requireArguments())
+
         val application = requireNotNull(this.activity).application
+
+        repository = application.getElectionRepositoryInstance()
+
+
 
         val binding: FragmentVoterInfoBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_voter_info, container, false
         )
-        val viewModelFactory = VoterInfoViewModelFactory(application)
+        val viewModelFactory = VoterInfoViewModelFactory(repository, arguments.argElectionId, arguments.argDivision )
         viewModel = ViewModelProvider(this, viewModelFactory).get(VoterInfoViewModel::class.java)
 
-        val arguments = VoterInfoFragmentArgs.fromBundle(requireArguments())
+
 
        binding.lifecycleOwner = this
         binding.viewModel = viewModel
