@@ -7,11 +7,11 @@ import org.koin.dsl.module
 
 val electionModule = module{
     viewModel {
-        ElectionsViewModel(get() as ElectionsRepositoryImplementation)
+        ElectionsViewModel(get() as ElectionsRepository)
     }
 
     viewModel {
-        VoterInfoViewModel(get() as ElectionsRepositoryImplementation)
+        VoterInfoViewModel(get() as ElectionsRepository)
     }
 
     single {

@@ -8,7 +8,7 @@ import com.example.android.politicalpreparedness.network.models.Division
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import kotlinx.coroutines.launch
 
-class VoterInfoViewModel(private val repository: ElectionsRepositoryImplementation) : ViewModel() {
+class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewModel() {
 
     private val _voterInfo = MutableLiveData<VoterInfoResponse>()
     val voterInfo: LiveData<VoterInfoResponse>
