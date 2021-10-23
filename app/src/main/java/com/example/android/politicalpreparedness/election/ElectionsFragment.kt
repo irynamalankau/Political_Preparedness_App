@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
 import com.example.android.politicalpreparedness.election.adapter.ElectionListener
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class ElectionsFragment: Fragment() {
 
     //Declare ViewModel
-    private lateinit var viewModel: ElectionsViewModel
+    private val viewModel: ElectionsViewModel by viewModel()
 
     //Declare recycler adapter
     private lateinit var adapterUpcomingElections: ElectionListAdapter
@@ -31,9 +31,7 @@ class ElectionsFragment: Fragment() {
         val binding: FragmentElectionBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_election, container, false
         )
-        //Add ViewModel values and create ViewModel
-        val viewModelFactory = ElectionsViewModelFactory(requireActivity().application)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ElectionsViewModel::class.java)
+
         binding.viewModel = viewModel
 
 

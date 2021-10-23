@@ -10,13 +10,7 @@ import com.example.android.politicalpreparedness.network.models.Election
 import kotlinx.coroutines.launch
 
 
-class ElectionsViewModel(application: Application) : ViewModel() {
-
-    //Create database instance
-    private val database = ElectionDatabase.getInstance(application)
-
-    //Create repository instance
-    private val repository = ElectionsRepository(database)
+class ElectionsViewModel(private val repository: ElectionsRepositoryImplementation) : ViewModel() {
 
     //TODO:implement loading status
 
