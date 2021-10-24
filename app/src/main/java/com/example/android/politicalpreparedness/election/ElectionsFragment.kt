@@ -52,11 +52,13 @@ class ElectionsFragment: Fragment() {
         })
 
 
-        viewModel.navigateToVoterInfo.observe(viewLifecycleOwner, Observer { election->
-            election?.let{
-                this.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(election.id, election.division))
+        viewModel.navigateToVoterInfo.observe(viewLifecycleOwner, Observer {
+            if (it){
+                this.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
+                        viewModel.clickedElection.id,
+                        viewModel.clickedElection.division))
+                viewModel.onVoterInfoNavigated()
             }
-            viewModel.onVoterInfoNavigated()
         })
 
 

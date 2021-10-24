@@ -17,9 +17,14 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
     val upcomingElections: LiveData<List<Election>>
         get() = repository.getCachedElections()
 
-    private val _navigateToVoterInfo = MutableLiveData<Election>()
-    val navigateToVoterInfo
+    //Store instance of clicked election from recyclerview
+    lateinit var clickedElection: Election
+
+    private val _navigateToVoterInfo = MutableLiveData<Boolean>()
+    val navigateToVoterInfo: LiveData<Boolean>
         get() = _navigateToVoterInfo
+
+
 
     //TODO: Create live data val for saved elections
 
@@ -33,6 +38,7 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
         viewModelScope.launch {
             try{
                 repository.refreshElectionsList()
+
             }
             catch (e: Exception){
                 e.printStackTrace()
@@ -43,11 +49,12 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
 
     //Create functions to navigate to saved or upcoming election voter info
     fun onElectionClicked(election: Election) {
-        _navigateToVoterInfo.value = election
+        clickedElection = election
+        _navigateToVoterInfo.value = true
     }
 
     fun onVoterInfoNavigated() {
-        _navigateToVoterInfo.value = null
+        _navigateToVoterInfo.value = false
     }
 
 }

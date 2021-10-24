@@ -11,7 +11,7 @@ interface ElectionsRepository {
 
     suspend fun refreshElectionsList()
 
-    suspend fun getVoterInfo(electionId: Int, address: String): VoterInfoResponse?
+    suspend fun getVoterInfo(address: String, electionId: Int): VoterInfoResponse?
 
 
 }

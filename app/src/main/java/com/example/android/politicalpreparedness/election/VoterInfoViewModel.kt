@@ -1,12 +1,15 @@
 package com.example.android.politicalpreparedness.election
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.network.models.Division
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewModel() {
 
@@ -24,15 +27,25 @@ class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewMode
         get() = _ballotInformationUrl
 
 
-    fun getVoterInfo(electionId: Int, address: String) {
+    fun getVoterInfo(division: Division, electionId: Int) {
+        var address = division.country
+        if (division.state.isNotEmpty()) address += ",${division.state}"
+        Log.d(TAG, address)
         viewModelScope.launch {
-            try{
-                _voterInfo.value = repository.getVoterInfo(electionId, address)
+            withContext(Dispatchers.IO) {
+                try {
+                    val response = repository.getVoterInfo(address, electionId)
+                    _voterInfo.postValue(response)
+                    Log.d(TAG, "${response?.election?.name}")
 
-            } catch (e: Exception){
-                e.printStackTrace()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Log.d(TAG, "Can't get voterInfo")
+                }
+
             }
         }
+
 
     }
 
@@ -54,6 +67,9 @@ class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewMode
     }
 
 
+    companion object {
+        private const val TAG = "VoterInfoViewModel"
+    }
     //TODO: add following
 
 }

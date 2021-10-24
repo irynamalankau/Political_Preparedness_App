@@ -13,6 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context="com.example.android.politicalpreparedness.MainActivity"
+
         >
 
 <!--         TODO: Add title to toolbar-->
@@ -22,7 +24,6 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/default_padding"
             android:singleLine="true"
-            app:title="@{viewModel.voterInfo.election.name}"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Election Title"/>
 
@@ -83,6 +84,7 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.voterInfo.state.get(0).electionAdministrationBody.correspondenceAddress.toFormattedString()}"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header"
             app:layout_constraintStart_toStartOf="@id/election_date" />
 

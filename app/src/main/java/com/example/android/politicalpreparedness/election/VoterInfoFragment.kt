@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +20,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class VoterInfoFragment() : Fragment() {
 
+
+
     private val viewModel: VoterInfoViewModel by viewModel()
     private val args: VoterInfoFragmentArgs by navArgs()
 
@@ -30,18 +33,12 @@ class VoterInfoFragment() : Fragment() {
                 inflater, R.layout.fragment_voter_info, container, false
         )
 
-       binding.lifecycleOwner = this
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        Log.d(TAG, args.argElectionId.toString())
 
-
-        //Populate voter info
-        val division = args.argDivision
-        if (division.state.isEmpty()) {
-            viewModel.getVoterInfo(args.argElectionId, division.country)
-        } else {
-            viewModel.getVoterInfo(args.argElectionId, "${division.country} - ${division.state}")
-        }
+        viewModel.getVoterInfo(args.argDivision, args.argElectionId)
 
         //TODO: Handle loading of URLs
 
@@ -61,6 +58,8 @@ class VoterInfoFragment() : Fragment() {
             }
         })
 
+
+
         //TODO: Handle save button UI state
         //TODO: cont'd Handle save button clicks
 return binding.root
@@ -72,4 +71,9 @@ return binding.root
         startActivity(intent)
     }
 
+    companion object {
+        private const val TAG = "VoterInfoFragment"
+    }
+
 }
+
