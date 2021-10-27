@@ -16,7 +16,9 @@ import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 import com.example.android.politicalpreparedness.network.models.Division
+import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.text.DateFormat
 
 class VoterInfoFragment() : Fragment() {
 
@@ -36,6 +38,11 @@ class VoterInfoFragment() : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+
+        viewModel.election.observe(viewLifecycleOwner, Observer {
+            binding.electionDate.text = DateFormat.getDateInstance().format(it.electionDay)
+        })
+
         Log.d(TAG, args.argElectionId.toString())
 
         viewModel.getVoterInfo(args.argDivision, args.argElectionId)
@@ -43,20 +50,12 @@ class VoterInfoFragment() : Fragment() {
         //TODO: Handle loading of URLs
 
         // Voting Locations
-        viewModel.votingLocationUrl.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                loadUrl(it)
-                viewModel.votingLocationsNavigated()
-            }
+        viewModel.url.observe(viewLifecycleOwner, Observer {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+            startActivity(intent)
         })
 
-        // Ballot Information
-        viewModel.ballotInformationUrl.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                loadUrl(it)
-                viewModel.ballotInformationNavigated()
-            }
-        })
+
 
 
 
@@ -65,11 +64,6 @@ class VoterInfoFragment() : Fragment() {
 return binding.root
     }
 
-    //Create method to load URL intents
-    private fun loadUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
-    }
 
     companion object {
         private const val TAG = "VoterInfoFragment"
