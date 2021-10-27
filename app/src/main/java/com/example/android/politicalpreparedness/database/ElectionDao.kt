@@ -19,8 +19,18 @@ interface ElectionDao {
     @Query("SELECT * FROM election_table WHERE id =:id")
     suspend fun getElectionById(id: Int): ElectionEntity
 
+    //Add insert followed election id
+    @Query("INSERT INTO followed_election_table (id) VALUES(:idElection)")
+    suspend fun insertFollowedElection(idElection: Int)
 
-    //TODO: Add delete query
+    //Add query to check if election is followed by user
+    @Query("SELECT CASE id WHEN NULL THEN 0 ELSE 1 END FROM followed_election_table WHERE id = :idElection")
+    fun isElectionFollowed(idElection: Int): LiveData<Int>
+
+    //Delete id of election that user decided to unfollow
+    @Query("DELETE FROM followed_election_table WHERE id = :idElection")
+    suspend fun deleteFollowedElection(idElection: Int)
+
 
     //Add clear query
     @Query("DELETE FROM election_table")

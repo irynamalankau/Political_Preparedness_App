@@ -12,3 +12,4 @@ data class ElectionEntity(
         @Embedded(prefix = "division_") @Json(name="ocdDivisionId") val division: Division
 
 )
+
