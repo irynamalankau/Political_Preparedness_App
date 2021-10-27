@@ -107,7 +107,25 @@
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header" />
 
-        <!--TODO: Add button to save election to Room-->
+        <Button
+            android:id="@+id/buttonFollow"
+            style="@style/primary_button"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:onClick="@{() -> viewModel.handleSaveButtonClick()}"
+            android:text="@string/button_follow_election"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
