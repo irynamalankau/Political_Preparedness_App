@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.example.android.politicalpreparedness.network.models.ElectionEntity
 import com.example.android.politicalpreparedness.network.models.FollowedElectionEntity
 
-@Database(entities = [ElectionEntity::class, FollowedElectionEntity::class], version = 2, exportSchema = false)
+@Database(entities = [ElectionEntity::class, FollowedElectionEntity::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class ElectionDatabase: RoomDatabase() {
 

@@ -15,6 +15,10 @@ interface ElectionDao {
     @Query("SELECT * FROM election_table")
     fun getAllElections(): LiveData<List<ElectionEntity>>
 
+    //Query to get followed elections
+    @Query("SELECT * FROM election_table WHERE id in (SELECT id FROM followed_election_table) ORDER BY electionDay DESC")
+    fun getFollowedElections(): LiveData<List<ElectionEntity>>
+
     //Add select single election query
     @Query("SELECT * FROM election_table WHERE id =:id")
     suspend fun getElectionById(id: Int): ElectionEntity
@@ -25,7 +29,7 @@ interface ElectionDao {
 
     //Add query to check if election is followed by user
     @Query("SELECT CASE id WHEN NULL THEN 0 ELSE 1 END FROM followed_election_table WHERE id = :idElection")
-    fun isElectionFollowed(idElection: Int): LiveData<Int>
+    fun isElectionFollowed(idElection: Int): Int
 
     //Delete id of election that user decided to unfollow
     @Query("DELETE FROM followed_election_table WHERE id = :idElection")

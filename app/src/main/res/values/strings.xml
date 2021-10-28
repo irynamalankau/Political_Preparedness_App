@@ -9,7 +9,9 @@
     <string name="election_website">Visit Election\'s Website</string>
     <string name="button_follow_election">Follow Election</string>
     <string name="button_unfollow_election">Unfollow Election</string>
-
+    <string name="title_followed_elections">Saved Elections</string>
+    <string name="error_elections">\"There isn\'t detail data to show about this election\"</string>
+    <string name="error_message_details">No details about this election are available.</string>
 
 
 </resources>

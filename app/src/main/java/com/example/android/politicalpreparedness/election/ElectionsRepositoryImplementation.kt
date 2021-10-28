@@ -39,9 +39,31 @@ class ElectionsRepositoryImplementation(private val dao: ElectionDao, private va
         }
     }
 
+    override fun getFollowedElections(): LiveData<List<Election>> {
+        return Transformations.map(dao.getFollowedElections()) {
+            it.asDomainModel()
+        }
+    }
+
     //get Voter Info from API
     override suspend fun getVoterInfo(address: String, electionId: Int): VoterInfoResponse {
         return apiService.getVoterInfo(address, electionId)
+    }
+
+    override suspend fun isElectionFollowed(electionId: Int):Boolean {
+        return dao.isElectionFollowed(electionId)>0
+    }
+
+    override suspend fun followElection(electionId: Int){
+
+            dao.insertFollowedElection(electionId)
+
+    }
+
+    override suspend fun deleteFollowedElection(electionId: Int) {
+
+            dao.deleteFollowedElection(electionId)
+
     }
 
 }

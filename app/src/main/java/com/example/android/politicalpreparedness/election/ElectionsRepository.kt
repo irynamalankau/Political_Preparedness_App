@@ -11,7 +11,15 @@ interface ElectionsRepository {
 
     suspend fun refreshElectionsList()
 
+    fun getFollowedElections(): LiveData<List<Election>>
+
     suspend fun getVoterInfo(address: String, electionId: Int): VoterInfoResponse?
+
+    suspend fun isElectionFollowed(electionId: Int): Boolean
+
+    suspend fun followElection(electionId: Int)
+
+    suspend fun deleteFollowedElection(electionId: Int)
 
 
 }
