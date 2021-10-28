@@ -3,6 +3,7 @@ package com.example.android.politicalpreparedness
 import android.app.Application
 import com.example.android.politicalpreparedness.database.databaseModule
 import com.example.android.politicalpreparedness.election.electionModule
+import com.example.android.politicalpreparedness.representative.representativeModule
 
 import com.example.android.politicalpreparedness.network.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,7 @@ class MyApp: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@MyApp)
-            modules(networkModule, electionModule, databaseModule)
+            modules(networkModule, electionModule, representativeModule, databaseModule)
         }
 
     }
