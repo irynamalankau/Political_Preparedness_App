@@ -12,6 +12,30 @@
     <string name="title_followed_elections">Saved Elections</string>
     <string name="error_elections">\"There isn\'t detail data to show about this election\"</string>
     <string name="error_message_details">No details about this election are available.</string>
+    <string name="find_my_representatives">FIND MY REPRESENTATIVES</string>
+    <string name="use_my_location_button">Use My Location</string>
+    <string name="representative_title">Representative Title</string>
+    <string name="representative_name">Representative Name</string>
+    <string name="representative_party">Representative Party</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="website">Website</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="search_representative">Representative search</string>
+    <string name="representatives">My Representatives</string>
+    <string name="search_button">Find My Representatives</string>
+    <string name="city">City</string>
+    <string name="zip">Zip code</string>
+    <string name="election_address">Election address</string>
+    <string name="ok">Ok</string>
+    <string name="error">Error</string>
+    <string name="location_permission_needed">Location permission is needed to use this feature</string>
+    <string name="provide_line1">Please, provide street address!</string>
+    <string name="provide_city">Please, enter city name!</string>
+    <string name="provide_zip">Please, enter zip code!</string>
+    <string name="error_getting_location">Something went wrong on capturing your location. Please try again.</string>
+    <string name="error_representatives_loading">Sorry...Something went wrong. No data available.</string>
 
 
 </resources>

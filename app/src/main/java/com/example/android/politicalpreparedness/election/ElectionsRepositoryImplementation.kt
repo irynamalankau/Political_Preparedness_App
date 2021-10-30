@@ -6,7 +6,9 @@ import androidx.lifecycle.Transformations
 import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.network.CivicsApiService
 import com.example.android.politicalpreparedness.network.asDomainModel
+import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.RepresentativeResponse
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -64,6 +66,10 @@ class ElectionsRepositoryImplementation(private val dao: ElectionDao, private va
 
             dao.deleteFollowedElection(electionId)
 
+    }
+
+    override suspend fun getRepresentatives(address: Address): RepresentativeResponse {
+        return apiService.getRepresentatives(address.toFormattedString())
     }
 
 }

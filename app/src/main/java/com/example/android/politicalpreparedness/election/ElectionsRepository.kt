@@ -1,9 +1,7 @@
 package com.example.android.politicalpreparedness.election
 
 import androidx.lifecycle.LiveData
-import com.example.android.politicalpreparedness.network.models.Division
-import com.example.android.politicalpreparedness.network.models.Election
-import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
+import com.example.android.politicalpreparedness.network.models.*
 
 interface ElectionsRepository {
 
@@ -21,5 +19,6 @@ interface ElectionsRepository {
 
     suspend fun deleteFollowedElection(electionId: Int)
 
+    suspend fun getRepresentatives(address: Address): RepresentativeResponse
 
 }

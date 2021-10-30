@@ -21,9 +21,7 @@
 
         <Button
             android:id="@+id/elections_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            style="@style/primary_button"
             android:text="Upcoming Elections"
             app:layout_constraintBottom_toTopOf="@+id/representatives_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,8 +29,7 @@
 
         <Button
             android:id="@+id/representatives_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/primary_button"
             android:text="Find My Representatives"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

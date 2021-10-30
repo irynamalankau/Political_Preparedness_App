@@ -47,7 +47,6 @@ class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewMode
         get() = _status
 
 
-
     fun getVoterInfo(division: Division, electionId: Int) {
         var address = division.country
         if (division.state.isNotEmpty()) address += ",${division.state}"
@@ -84,26 +83,24 @@ class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewMode
 
     //Navigation to URLs
 
-    fun getUrl(url: String){
+    fun getUrl(url: String) {
         _url.value = url
     }
 
-   fun toggleFollowElectionStatus(electionId: Int){
-       viewModelScope.launch {
-           withContext(Dispatchers.IO){
-               if (!repository.isElectionFollowed(electionId)){
-                   repository.followElection(electionId)
-                   _isFollowedElection.postValue(true)
-               }
-               else{
-                   repository.deleteFollowedElection(electionId)
-                   _isFollowedElection.postValue(false)
-               }
-           }
-           }
+    fun toggleFollowElectionStatus(electionId: Int) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                if (!repository.isElectionFollowed(electionId)) {
+                    repository.followElection(electionId)
+                    _isFollowedElection.postValue(true)
+                } else {
+                    repository.deleteFollowedElection(electionId)
+                    _isFollowedElection.postValue(false)
+                }
+            }
+        }
 
-       }
-
+    }
 
 
     companion object {
