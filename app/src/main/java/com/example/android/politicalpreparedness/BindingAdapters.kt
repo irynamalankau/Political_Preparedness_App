@@ -8,25 +8,14 @@ import com.example.android.politicalpreparedness.network.ApiStatus
 
 @BindingAdapter("apiStatus")
 fun bindStatus(progressbar: ProgressBar, status: ApiStatus?) {
-    when (status) {
-        ApiStatus.LOADING -> {
-            progressbar.visibility = View.VISIBLE
-        }
-        ApiStatus.ERROR -> {
-            progressbar.visibility = View.GONE
-        }
-        ApiStatus.DONE -> {
-            progressbar.visibility = View.GONE
-        }
-    }
+    progressbar.visibility = View.GONE
+    if (status == ApiStatus.LOADING)
+        progressbar.visibility = View.VISIBLE
 }
 
 @BindingAdapter("errorMessage")
 fun bindErrorVisibility(view: TextView, status: ApiStatus?){
-    if (status == ApiStatus.ERROR){
+    view.visibility = View.GONE
+    if (status == ApiStatus.ERROR)
         view.visibility = View.VISIBLE
-    }
-    else{
-        view.visibility = View.GONE
-    }
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.text.TextUtils" />
         <import type="android.view.View" />
         <variable
@@ -17,14 +16,16 @@
         android:layout_height="match_parent"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
-
         <TextView
-            android:id="@+id/error_message_details"
+            android:id="@+id/error_message_placeholder_voter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/error_message_details"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="@string/error_message_voter_info"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/buttonFollow"
+            app:errorMessage="@{viewModel.status}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,18 +46,22 @@
                 android:layout_height="match_parent"
                 android:text="@{viewModel.election.name}"
                 android:textColor="@color/white"
+                android:textSize="@dimen/text_size_large"
                 tools:layout_editor_absoluteX="@dimen/medium_space"
                 tools:layout_editor_absoluteY="@dimen/medium_space" />
         </androidx.appcompat.widget.Toolbar>
-
-
-
 
         <TextView
             android:id="@+id/election_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_padding"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:text="12 November 2055" />
 
@@ -64,6 +69,9 @@
             android:id="@+id/election_info_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
             android:onClick="@{()->viewModel.getUrl(viewModel.electionInfoUrl)}"
             android:text="@string/election_website"
             android:visibility="@{TextUtils.isEmpty(viewModel.electionInfoUrl) ? View.GONE : View.VISIBLE}"
@@ -74,6 +82,9 @@
             android:id="@+id/state_locations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
             android:onClick="@{()->viewModel.getUrl(viewModel.locationsUrl)}"
             android:text="@string/voting_locations"
             android:visibility="@{TextUtils.isEmpty(viewModel.locationsUrl) ? View.GONE : View.VISIBLE}"
@@ -84,6 +95,9 @@
             android:id="@+id/state_ballot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
             android:onClick="@{()->viewModel.getUrl(viewModel.ballotInfoUrl)}"
             android:text="@string/ballot_information"
             android:visibility="@{TextUtils.isEmpty(viewModel.ballotInfoUrl) ? View.GONE : View.VISIBLE}"
@@ -96,12 +110,14 @@
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="state_correspondence_header,address" />
 
-
         <TextView
             android:id="@+id/state_correspondence_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
             android:text="@string/correspondence_header"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_normal"
             android:visibility="@{TextUtils.isEmpty(viewModel.correspondenceAddress.toFormattedString()) ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_ballot" />
@@ -110,6 +126,7 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_normal"
             android:text="@{viewModel.correspondenceAddress.toFormattedString()}"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header" />
@@ -117,7 +134,10 @@
         <Button
             android:id="@+id/buttonFollow"
             style="@style/primary_button"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"
+            android:contentDescription="@string/desc_button_follow_election"
             android:text="@string/button_follow_election"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

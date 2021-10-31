@@ -2,25 +2,26 @@ package com.example.android.politicalpreparedness.election
 
 import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.network.CivicsApiService
+import com.example.android.politicalpreparedness.repository.Repository
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val electionModule = module{
     viewModel {
-        ElectionsViewModel(get() as ElectionsRepository)
+        ElectionsViewModel(get() as Repository)
     }
 
     viewModel {
-        VoterInfoViewModel(get() as ElectionsRepository)
+        VoterInfoViewModel(get() as Repository)
     }
 
     single {
-        provideElectionRepository(get(), get())
+        provideRepository(get(), get())
     }
 }
 
 
-private fun provideElectionRepository(
+private fun provideRepository(
         dao: ElectionDao,
         apiService: CivicsApiService
-): ElectionsRepository = ElectionsRepositoryImplementation(dao, apiService)
+): Repository = RepositoryImpl(dao, apiService)

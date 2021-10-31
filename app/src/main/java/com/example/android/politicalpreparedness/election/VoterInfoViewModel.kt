@@ -7,11 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.network.ApiStatus
 import com.example.android.politicalpreparedness.network.models.*
+import com.example.android.politicalpreparedness.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewModel() {
+class VoterInfoViewModel(private val repository: Repository) : ViewModel() {
 
     private val _election = MutableLiveData<ElectionVoterInfo>()
     val election: LiveData<ElectionVoterInfo>

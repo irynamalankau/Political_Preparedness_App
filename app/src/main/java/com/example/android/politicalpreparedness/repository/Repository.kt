@@ -1,9 +1,9 @@
-package com.example.android.politicalpreparedness.election
+package com.example.android.politicalpreparedness.repository
 
 import androidx.lifecycle.LiveData
 import com.example.android.politicalpreparedness.network.models.*
 
-interface ElectionsRepository {
+interface Repository {
 
     fun getCachedElections(): LiveData<List<Election>>
 

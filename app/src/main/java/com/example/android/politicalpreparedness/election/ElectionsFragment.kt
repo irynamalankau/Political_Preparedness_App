@@ -35,14 +35,9 @@ class ElectionsFragment: Fragment() {
                 inflater, R.layout.fragment_election, container, false
         )
 
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-
-        viewModel.status.observe(viewLifecycleOwner, Observer {
-           if(it == ApiStatus.ERROR)
-               Toast.makeText(requireContext(), R.string.error_elections, Toast.LENGTH_LONG).show()
-
-        })
 
         //Setup recycler adapters
         //upcoming elections
@@ -81,11 +76,6 @@ class ElectionsFragment: Fragment() {
                 viewModel.onVoterInfoNavigated()
             }
         })
-
-
-
-
-        //TODO: Link elections to voter info
 
         return binding.root
     }

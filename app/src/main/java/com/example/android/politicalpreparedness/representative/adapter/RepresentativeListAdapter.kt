@@ -33,7 +33,7 @@ class RepresentativeViewHolder(var binding: ItemRepresentativeBinding): Recycler
 
     fun bind(item: Representative) {
         binding.representative = item
-        binding.representativeImg.setImageResource(R.drawable.ic_profile)
+        binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
         // Show social links
         item.official.urls?.let { showWWWLinks(it) }

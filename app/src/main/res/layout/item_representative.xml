@@ -14,11 +14,12 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/representative_img"
-            profileImage="@{representative.official.photoUrl}"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="@dimen/default_padding"
+            android:id="@+id/representative_photo"
+            app:profileImage="@{representative.official.photoUrl}"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:contentDescription="@string/desc_repr_photo"
+            android:layout_marginStart="@dimen/margin_small"
             app:layout_constraintBottom_toBottomOf="@+id/representative_party"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/header_representatives"
@@ -26,29 +27,29 @@
 
         <TextView
             android:id="@+id/header_representatives"
-            style="@style/title"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_padding"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/default_padding"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
             android:maxLines="1"
             android:text="@{representative.office.name}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/representative_img"
+            app:layout_constraintStart_toEndOf="@id/representative_photo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/representative_title" />
 
         <TextView
             android:id="@+id/representative_name"
-            style="@style/subtitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/margin_small"
             android:maxLines="1"
             android:text="@{representative.official.name}"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintEnd_toStartOf="@+id/web_icon"
             app:layout_constraintStart_toStartOf="@+id/header_representatives"
             app:layout_constraintTop_toBottomOf="@id/header_representatives"
@@ -56,14 +57,13 @@
 
         <TextView
             android:id="@+id/representative_party"
-            style="@style/subtitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/margin_small"
             android:maxLines="1"
             android:text="@{representative.official.party}"
             android:textColor="@color/gray50"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_size_xsmall"
             app:layout_constraintEnd_toStartOf="@+id/web_icon"
             app:layout_constraintStart_toStartOf="@+id/representative_name"
             app:layout_constraintTop_toBottomOf="@id/representative_name"
@@ -71,41 +71,32 @@
 
         <ImageView
             android:id="@+id/web_icon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:contentDescription="@string/website"
-            android:visibility="invisible"
+            android:contentDescription="@string/desc_website"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/facebook_icon"
             app:srcCompat="@drawable/ic_www"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="@style/icon_social_media" />
 
         <ImageView
             android:id="@+id/facebook_icon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:contentDescription="@string/facebook"
-            android:visibility="invisible"
+            android:contentDescription="@string/desc_facebook"
             app:layout_constraintBottom_toBottomOf="@+id/web_icon"
             app:layout_constraintEnd_toStartOf="@id/twitter_icon"
             app:layout_constraintTop_toTopOf="@+id/web_icon"
             app:srcCompat="@drawable/ic_facebook"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="@style/icon_social_media"/>
 
         <ImageView
             android:id="@+id/twitter_icon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:contentDescription="@string/twitter"
-            android:visibility="invisible"
+            android:contentDescription="@string/desc_twitter"
             app:layout_constraintBottom_toBottomOf="@+id/facebook_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/facebook_icon"
             app:srcCompat="@drawable/ic_twitter"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            style="@style/icon_social_media"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

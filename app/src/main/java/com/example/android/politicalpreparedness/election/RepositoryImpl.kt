@@ -10,12 +10,14 @@ import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.network.models.Election
 import com.example.android.politicalpreparedness.network.models.RepresentativeResponse
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
+import com.example.android.politicalpreparedness.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-private const val TAG = "ElectionsRepositoryIMPL"
 
-class ElectionsRepositoryImplementation(private val dao: ElectionDao, private val apiService: CivicsApiService ): ElectionsRepository {
+
+class RepositoryImpl(private val dao: ElectionDao,
+                     private val apiService: CivicsApiService ): Repository {
 
     //get all elections from the db
     override fun getCachedElections(): LiveData<List<Election>> {
@@ -26,19 +28,17 @@ class ElectionsRepositoryImplementation(private val dao: ElectionDao, private va
 
     //get elections list from API and insert into db
     override suspend fun refreshElectionsList() {
-        withContext(Dispatchers.IO) {
+       /* withContext(Dispatchers.IO) {
             try {
                 val response = apiService.getElections().elections
-
                 dao.insertAll(response)
-
                 Log.d(TAG, "Response is success")
             } catch (e: Exception) {
                 e.printStackTrace()
-
             }
-
-        }
+        }*/
+        val response = apiService.getElections().elections
+        dao.insertAll(response)
     }
 
     override fun getFollowedElections(): LiveData<List<Election>> {
@@ -70,6 +70,10 @@ class ElectionsRepositoryImplementation(private val dao: ElectionDao, private va
 
     override suspend fun getRepresentatives(address: Address): RepresentativeResponse {
         return apiService.getRepresentatives(address.toFormattedString())
+    }
+
+    companion object{
+        private const val TAG = "ElectionsRepositoryIMPL"
     }
 
 }

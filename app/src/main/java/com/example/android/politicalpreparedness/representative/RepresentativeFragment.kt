@@ -62,11 +62,6 @@ class RepresentativeFragment : Fragment() {
                 resources.getStringArray(R.array.states)
         )
 
-        viewModel.status.observe(viewLifecycleOwner, Observer {
-            if(it==ApiStatus.ERROR)
-                binding.listPlaceholder.visibility = View.VISIBLE
-        })
-
 
 
         viewModel.messageResource.observe(viewLifecycleOwner, Observer {

@@ -12,7 +12,7 @@ interface ElectionDao {
     suspend fun insertAll(elections: List<ElectionEntity>)
 
     // Add select all election query
-    @Query("SELECT * FROM election_table")
+    @Query("SELECT * FROM election_table WHERE NOT id=2000")
     fun getAllElections(): LiveData<List<ElectionEntity>>
 
     //Query to get followed elections
@@ -34,7 +34,6 @@ interface ElectionDao {
     //Delete id of election that user decided to unfollow
     @Query("DELETE FROM followed_election_table WHERE id = :idElection")
     suspend fun deleteFollowedElection(idElection: Int)
-
 
     //Add clear query
     @Query("DELETE FROM election_table")

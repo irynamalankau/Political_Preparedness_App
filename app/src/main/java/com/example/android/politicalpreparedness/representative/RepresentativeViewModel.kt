@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.R
-import com.example.android.politicalpreparedness.election.ElectionsRepository
+import com.example.android.politicalpreparedness.repository.Repository
 import com.example.android.politicalpreparedness.network.ApiStatus
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.representative.model.Representative
@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RepresentativeViewModel(private val repository: ElectionsRepository) : ViewModel() {
+class RepresentativeViewModel(private val repository: Repository) : ViewModel() {
 
     //Establish live data for representatives
     private val _representatives = MutableLiveData<List<Representative>>()

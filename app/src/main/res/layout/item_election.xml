@@ -20,25 +20,15 @@
 
         <TextView
             android:id="@+id/election_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
             android:text="@{election.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Election Title"
-            style="@style/title" />
+            style="@style/election_item_title" />
 
         <TextView
             android:id="@+id/election_date"
-            style="@style/subtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="16dp"
             android:text="@{election.electionDay.toString()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +36,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/election_title"
             app:layout_constraintVertical_bias="0.0"
-            tools:text="Election Date" />
+            tools:text="Election Date"
+            style="@style/election_item_date" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

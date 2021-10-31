@@ -3,16 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-   <data>
-       <variable
-           name="viewModel"
-           type="com.example.android.politicalpreparedness.election.ElectionsViewModel" />
-   </data>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.election.ElectionsViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_normal">
+
+        <TextView
+            android:id="@+id/error_message_placeholder_elections"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/error_elections"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:errorMessage="@{viewModel.status}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_upcoming_elections" />
 
         <TextView
             android:id="@+id/header_upcoming_elections"
@@ -27,6 +41,7 @@
             android:id="@+id/recycler_upcoming_elections"
             android:layout_width="@dimen/match_constraints"
             android:layout_height="@dimen/match_constraints"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -44,8 +59,8 @@
         <TextView
             android:id="@+id/header_followed_elections"
             style="@style/header"
-            android:text="@string/title_followed_elections"
             android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/title_followed_elections"
             app:layout_constraintBottom_toTopOf="@+id/recycler_followed_elections"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +70,7 @@
             android:id="@+id/recycler_followed_elections"
             android:layout_width="@dimen/match_constraints"
             android:layout_height="@dimen/match_constraints"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/header_followed_elections"
@@ -65,6 +81,7 @@
             android:id="@+id/progressBar_elections"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:apiStatus="@{viewModel.status}"
             app:layout_constraintBottom_toBottomOf="@+id/recycler_upcoming_elections"
             app:layout_constraintEnd_toEndOf="parent"

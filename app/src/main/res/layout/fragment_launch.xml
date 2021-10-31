@@ -13,6 +13,7 @@
             android:id="@+id/ballot_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/launch_logo_desc"
             app:layout_constraintBottom_toTopOf="@+id/elections_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,7 @@
             android:id="@+id/elections_button"
             style="@style/primary_button"
             android:text="Upcoming Elections"
+            android:contentDescription="@string/desc_button_elections"
             app:layout_constraintBottom_toTopOf="@+id/representatives_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -31,6 +33,7 @@
             android:id="@+id/representatives_button"
             style="@style/primary_button"
             android:text="Find My Representatives"
+            android:contentDescription="@string/desc_button_representatives"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

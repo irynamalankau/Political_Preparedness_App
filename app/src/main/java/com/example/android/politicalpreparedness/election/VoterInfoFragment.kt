@@ -42,11 +42,9 @@ class VoterInfoFragment() : Fragment() {
 
         viewModel.status.observe(viewLifecycleOwner, Observer {
             if(it==ApiStatus.ERROR){
-                binding.errorMessageDetails.visibility = View.VISIBLE
                 binding.toolbar.visibility = View.GONE
             }
         })
-
 
         viewModel.election.observe(viewLifecycleOwner, Observer {
             binding.electionDate.text = DateFormat.getDateInstance().format(it.electionDay)

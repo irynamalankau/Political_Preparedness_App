@@ -2,16 +2,16 @@
 <resources>
     <string name="app_name">Political Preparedness</string>
     <string name="title_upcoming_elections">Upcoming Elections</string>
-    <string name="correspondence_header">Correspondence Address</string>
+    <string name="correspondence_header">Correspondence Address:</string>
     <string name="election_information">Election Information</string>
-    <string name="voting_locations">Voting Locations</string>
-    <string name="ballot_information">Ballot Information</string>
-    <string name="election_website">Visit Election\'s Website</string>
+    <string name="voting_locations"><u>Find Voting Locations</u></string>
+    <string name="ballot_information"><u>Get Ballot Information</u></string>
+    <string name="election_website"><u>Visit Election\'s Website</u></string>
     <string name="button_follow_election">Follow Election</string>
     <string name="button_unfollow_election">Unfollow Election</string>
     <string name="title_followed_elections">Saved Elections</string>
-    <string name="error_elections">\"There isn\'t detail data to show about this election\"</string>
-    <string name="error_message_details">No details about this election are available.</string>
+    <string name="error_elections">"Sorry, no data is available."</string>
+    <string name="error_message_voter_info">No details about this election are available.</string>
     <string name="find_my_representatives">FIND MY REPRESENTATIVES</string>
     <string name="use_my_location_button">Use My Location</string>
     <string name="representative_title">Representative Title</string>
@@ -19,9 +19,9 @@
     <string name="representative_party">Representative Party</string>
     <string name="address_line_1">Address Line 1</string>
     <string name="address_line_2">Address Line 2</string>
-    <string name="website">Website</string>
-    <string name="facebook">Facebook</string>
-    <string name="twitter">Twitter</string>
+    <string name="desc_website">Website</string>
+    <string name="desc_facebook">Facebook</string>
+    <string name="desc_twitter">Twitter</string>
     <string name="search_representative">Representative search</string>
     <string name="representatives">My Representatives</string>
     <string name="search_button">Find My Representatives</string>
@@ -35,7 +35,12 @@
     <string name="provide_city">Please, enter city name!</string>
     <string name="provide_zip">Please, enter zip code!</string>
     <string name="error_getting_location">Something went wrong on capturing your location. Please try again.</string>
-    <string name="error_representatives_loading">Sorry...Something went wrong. No data available.</string>
-
-
+    <string name="error_loading_representatives">Sorry, something went wrong. No data is available.</string>
+    <string name="launch_logo_desc">Application Logo</string>
+    <string name="desc_button_elections">Upcoming elections button</string>
+    <string name="desc_button_representatives">Representative search button</string>
+    <string name="desc_button_follow_election">Button to follow and unfollow the election</string>
+    <string name="desc_button_find_representatives">Button find representatives</string>
+    <string name="desc_button_use_location">Button use my location</string>
+    <string name="desc_repr_photo">Photo of the representative</string>
 </resources>

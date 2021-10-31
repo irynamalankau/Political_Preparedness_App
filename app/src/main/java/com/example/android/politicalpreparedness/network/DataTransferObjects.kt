@@ -13,14 +13,3 @@ fun List<ElectionEntity>.asDomainModel(): List<Election> {
         )
     }
 }
-
-fun List<Election>.asDatabaseModel(): List<ElectionEntity>{
-    return map {
-        ElectionEntity(
-                id = it.id,
-                name = it.name,
-                electionDay = it.electionDay,
-                division = it.division
-        )
-    }
-}
